@@ -50,7 +50,7 @@
 import axiosInstance from '../utils/axios';
 
 export default {
-  name: 'Register',
+  name: 'UserRegister',
   data() {
     return {
       username: '',

@@ -28,7 +28,7 @@
 import axiosInstance from '../utils/axios';
 
 export default {
-  name: 'Chat',
+  name: 'ChatView',
   data() {
     return {
       messages: [],

@@ -116,7 +116,7 @@
 import axiosInstance from '../utils/axios';
 
 export default {
-  name: 'Navigation',
+  name: 'ResourceNavigation',
   data() {
     return {
       navigationItems: [],

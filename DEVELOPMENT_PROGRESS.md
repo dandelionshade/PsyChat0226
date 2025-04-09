@@ -1,104 +1,102 @@
-# PsyChat 开发进度记录
+# PsyChat 开发进度与路线图
 
-## 阶段二：MVP开发计划 (2024-02-27)
+> 本文档跟踪项目开发进度和未来计划。项目概览请参阅 `PROJECT_OVERVIEW.md`，技术决策和详细开发日志请参阅 `DEVELOPMENT_LOG.md`。
 
-### 1. 后端API开发
+## 当前开发状态
 
-#### 1.1 完成的工作
+### 已完成功能
 
-1. **依赖注入模块**
-   - 创建了 `app/api/deps.py` 文件
-   - 实现了数据库会话获取功能
-   - 实现了用户认证依赖（获取当前用户、活跃用户和管理员用户）
+#### 后端
+- ✅ 数据库模型设计与实现
+- ✅ 用户认证API (注册、登录、获取/更新用户信息)
+- ✅ 聊天功能API (发送消息、获取历史、获取/删除特定记录)
+- ✅ 导航内容API (创建、获取、更新、删除)
+- ✅ 基本单元测试
 
-2. **聊天功能API**
-   - 创建了 `app/api/chat.py` 文件
-   - 实现了发送消息API (`POST /api/chat/send`)
-   - 实现了获取聊天历史API (`GET /api/chat/history`)
-   - 实现了获取特定聊天记录API (`GET /api/chat/history/{chat_id}`)
-   - 实现了删除聊天记录API (`DELETE /api/chat/history/{chat_id}`)
-   - 创建了聊天数据验证模式 `app/schemas/chat.py`
+#### 前端
+- ⬜ 待开始
 
-3. **导航内容API**
-   - 创建了 `app/api/navigation.py` 文件
-   - 实现了创建导航内容API (`POST /api/navigation/`)
-   - 实现了获取导航内容列表API (`GET /api/navigation/`)
-   - 实现了获取特定导航内容API (`GET /api/navigation/{navigation_id}`)
-   - 实现了更新导航内容API (`PUT /api/navigation/{navigation_id}`)
-   - 实现了删除导航内容API (`DELETE /api/navigation/{navigation_id}`)
-   - 创建了导航内容数据验证模式 `app/schemas/navigation.py`
+### 进行中
+- 🔄 数据库迁移脚本 (2024-02-27起)
+- 🔄 前端基础页面搭建 (2024-02-27起)
 
-4. **主应用入口更新**
-   - 更新了 `app/main.py` 文件
-   - 集成了用户、聊天和导航内容API路由
-   - 配置了CORS中间件
+## 开发路线图
 
-5. **数据验证模式集成**
-   - 更新了 `app/schemas/__init__.py` 文件
-   - 导入并暴露了所有数据验证模型
+### 短期目标 (1-2周)
 
-6. **单元测试**
-   - 创建了 `app/tests/test_api.py` 文件
-   - 实现了用户注册和登录测试
-   - 实现了聊天功能API测试
-   - 实现了导航内容API测试
+#### 后端
+1. 完成数据库迁移
+   - [ ] 创建迁移脚本
+   - [ ] 实现数据库版本控制
 
-#### 1.2 API功能说明
+2. 实现缓存功能
+   - [ ] 会话管理
+   - [ ] API限流
+   - [ ] 数据缓存
 
-1. **用户认证API**
-   - 用户注册: `POST /api/register`
-   - 用户登录: `POST /api/login`
-   - 获取当前用户信息: `GET /api/me`
-   - 更新当前用户信息: `PUT /api/me`
+3. 完善测试
+   - [ ] 增加集成测试
+   - [ ] 提高测试覆盖率
 
-2. **聊天功能API**
-   - 发送消息: `POST /api/chat/send`
-   - 获取聊天历史: `GET /api/chat/history`
-   - 获取特定聊天记录: `GET /api/chat/history/{chat_id}`
-   - 删除聊天记录: `DELETE /api/chat/history/{chat_id}`
+#### 前端
+1. 基础页面搭建
+   - [ ] 登录/注册页面
+   - [ ] 聊天主界面
+   - [ ] 导航内容展示页面
+   - [ ] 用户设置页面
 
-3. **导航内容API**
-   - 创建导航内容: `POST /api/navigation/`
-   - 获取导航内容列表: `GET /api/navigation/`
-   - 获取特定导航内容: `GET /api/navigation/{navigation_id}`
-   - 更新导航内容: `PUT /api/navigation/{navigation_id}`
-   - 删除导航内容: `DELETE /api/navigation/{navigation_id}`
+2. 实现基础功能交互
+   - [ ] 用户认证
+   - [ ] 聊天功能
+   - [ ] 资源浏览
 
-#### 1.3 下一步计划
+### 中期目标 (1个月)
 
-1. **数据库迁移**
-   - 创建迁移脚本
-   - 实现数据库版本控制
+#### 后端
+- [ ] 推荐系统基础实现
+- [ ] 聊天消息分析功能
+- [ ] API性能优化
 
-2. **缓存实现**
-   - 实现会话管理
-   - 实现API限流
-   - 实现数据缓存
+#### 前端
+- [ ] 响应式布局完善
+- [ ] 聊天界面优化
+- [ ] 资源推荐展示
 
-3. **前端基础页面搭建**
-   - 创建登录/注册页面
-   - 创建聊天主界面
-   - 创建导航内容展示页面
-   - 创建用户设置页面
+### 长期目标 (2-3个月)
 
-### 2. 测试说明
+- [ ] 高级聊天功能 (情绪分析、智能回复)
+- [ ] 用户行为分析
+- [ ] 完整推荐系统
+- [ ] 移动端适配
+- [ ] CI/CD流程搭建
 
-使用以下命令运行测试：
+## 开发规范
 
+### 代码提交规范
+1. 每完成一个小功能提交一次
+2. 提交信息格式：`[范围]: 简短描述`
+   - 范围示例: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+   - 例如: `feat(auth): 添加用户注册API`
+
+### 分支管理
+- `main`: 稳定版本
+- `dev`: 开发分支
+- 功能分支: `feature/功能名称`
+- 修复分支: `fix/问题描述`
+
+## 测试与文档
+
+### 测试指南
 ```bash
+# 运行所有测试
+cd back-end
+pytest
+
+# 运行特定测试文件
 pytest app/tests/test_api.py -v
 ```
 
-### 3. API文档访问
-
-启动应用后，可以通过以下URL访问Swagger文档：
-
-```
-http://localhost:8000/docs
-```
-
-或者通过以下URL访问ReDoc文档：
-
-```
-http://localhost:8000/redoc
-```
+### API文档
+启动应用后访问：
+- Swagger文档: `http://localhost:8000/docs`
+- ReDoc文档: `http://localhost:8000/redoc`
