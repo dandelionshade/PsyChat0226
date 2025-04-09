@@ -11,6 +11,7 @@
   "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@vue/babel-plugin-jsx": "^1.2.5",
     "eslint": "^9.21.0",
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-vue": "^9.32.0",
